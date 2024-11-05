@@ -38,4 +38,12 @@ public class Departamento {
     public void addProducto(Producto producto){
         Departamento.productoData.add(producto);
     }
+
+    public void eliminarProducto(int id){
+        for (int i = 0; i < Departamento.productoData.size(); i++) {
+            if(Departamento.productoData.get(i).getId() == id){
+                Departamento.productoData.remove(i);
+            }
+        }
+    }
 }

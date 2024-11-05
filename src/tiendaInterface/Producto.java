@@ -16,6 +16,10 @@ public class Producto {
         this.cantidad = cantidad;
     }
 
+    public int getId(){
+        return this.id;
+    }
+
     public String getNombre() {
         return nombre;
     }
