@@ -1,25 +1,36 @@
 package tiendaInterface;
-
 import java.util.ArrayList;
 
 public class Tienda {
-    private String nombre;
-    private Departamento departamento;
-    static ArrayList<Departamento> departamentoData = new ArrayList<>();
+    private String nombre;                         // Nombre de la tienda
+    private ArrayList<Departamento> departamentos; // Lista de departamentos en la tienda
 
-    public Tienda(String nombre){
+    // Constructor que inicializa la tienda con su nombre y una lista vacía de departamentos
+    public Tienda(String nombre) {
         this.nombre = nombre;
+        this.departamentos = new ArrayList<>();    // Inicializa la lista de departamentos vacía
     }
 
-    public String getNombre(){
-        return this.nombre;
+    // Método para obtener el nombre de la tienda
+    public String getNombre() { return nombre; }
+
+    // Método para agregar un departamento a la tienda
+    public void agregarDepartamento(Departamento departamento) {
+        departamentos.add(departamento);
     }
 
-    public void setNombre(String nombre){
-        this.nombre = nombre;
+    // Método para consultar todos los departamentos de la tienda
+    public ArrayList<Departamento> consultarDepartamentos() {
+        return departamentos;
     }
 
-    public void addDepartamento(Departamento departamento){
-        Tienda.departamentoData.add(departamento);
+    // Método para consultar productos de un departamento por su nombre
+    public ArrayList<Producto> consultarProductosPorDepartamento(String nombreDepartamento) {
+        for (Departamento dep : departamentos) {
+            if (dep.getNombredep().equalsIgnoreCase(nombreDepartamento)) {
+                return dep.getProductos();
+            }
+        }
+        return new ArrayList<>(); // Devuelve una lista vacía si no encuentra el departamento
     }
 }
